@@ -1,0 +1,25 @@
+p1 = subprocess.run(['dir'], shell=True)
+
+p2 = subprocess.run(['py', '--version'], shell=True, capture_output=True)
+print(f'STDOUT: {p2.stdout.decode()}')
+
+p2 = subprocess.run(['py', '--version'], shell=True, text=True capture_output=True)
+print(f'STDOUT: {p2.stdout}')
+
+# save to file
+with open('output.txt', 'w') as file:
+	p1 = subprocess.run(['dir'], stdout=f, text=True shell=True)
+
+# open multiple windows at different cwd
+def open_cmd_prompts(num_of_prompts):
+    for i in range(1, num_of_prompts+1):
+        cmd_dir = os.path.join(home_dir, 'Node_Folder', f'Node{i}')
+        subprocess.run(["start"], cwd=cmd_dir, shell=True)
+		
+# open 3 windows at different cwd
+    for i in range(1, 4):
+        cmd = rf"py node_driver.py -H \"localhost\" -p 8080 --client -n 'Node{i}'"
+        cmd_split = cmd.split(' ')
+        cmd_node = cmd_split[-1].replace("'", '')
+        cmd_dir = os.path.join(home_dir, 'Node_Folder', cmd_node)
+        subprocess.run(["start", cmd], cwd=cmd_dir, shell=True)

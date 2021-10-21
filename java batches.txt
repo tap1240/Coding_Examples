@@ -1,0 +1,50 @@
+    public static <T> Stream<List<T>> batches(List<T> source, int number_of_batches) {
+        if (number_of_batches <= 0)
+            throw new IllegalArgumentException("length = " + number_of_batches);
+        int size = source.size();
+        if (size <= 0)
+            return Stream.empty();
+        int fullChunks = (size - 1) / number_of_batches;
+        return IntStream.range(0, fullChunks + 1).mapToObj(
+                n -> {
+                    if (n == fullChunks) 
+                        return source.subList(n * number_of_batches, size);
+                    return source.subList(n * number_of_batches, (n + 1) * number_of_batches);
+                });
+    }
+	
+driver:
+
+        List<Integer> list = Arrays.asList(101, 45, 33, 22, 57, 84, 72 ,69, 90, 14, 5);
+        System.out.println("By 3:");
+        Solution.batches(list, 3).forEach(System.out::println);
+--------------------------------------------------------------------
+
+
+    public static <T> List<List<T>> chunk(List<T> input, int chunkSize) {
+
+        int inputSize = input.size();
+        int chunkCount = (int) Math.ceil(inputSize / (double) chunkSize);
+
+        Map<Integer, List<T>> map = new HashMap<>(chunkCount);
+        List<List<T>> chunks = new ArrayList<>(chunkCount);
+
+        for (int i = 0; i < inputSize; i++) {
+
+            map.computeIfAbsent(i / chunkSize, (ignore) -> {
+
+                List<T> chunk = new ArrayList<>();
+                chunks.add(chunk);
+                return chunk;
+
+            }).add(input.get(i));
+        }
+
+        return chunks;
+    }
+
+driver:
+
+        List<Integer> ints = Arrays.asList(101, 45, 33, 22, 57, 84, 72 ,69, 90, 14, 5);
+        List<List<Integer>> chunks = Solution.chunk(ints, 4);
+        System.out.println(chunks);

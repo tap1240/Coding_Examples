@@ -1,0 +1,22 @@
+# write file
+ledger_path = os.path.join(home_dir, 'ledger.json')
+    if os.path.exists(ledger_path):
+        pass
+    else:
+        ledger_data = {} # create skeleton here
+        with open('ledger.json', 'w+') as outfile:
+            json.dump(ledger_data, outfile, indent=4)
+
+---------
+# read file
+    for file in os.listdir(pending_transactions_dir):
+        tx_path = os.path.join(pending_transactions_dir, file)
+        with open(tx_path, 'r+') as tx_file:
+            tx = json.load(tx_file)
+        print(tx)
+
+# single file
+def get_json_data(json_path):
+    data_path = os.path.join(home_dir, json_path)
+    with open(data_path, 'r+') as data_file:
+        data = json.load(data_file)

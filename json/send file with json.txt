@@ -1,0 +1,17 @@
+    file_name = '87e60407a6866c0badf1cde0900ff517c31023ff9c6a1911848fe4543cbc6bba'
+    file_path = os.path.join(home_dir, 'Node_Folder', 'Node1', f'{file_name}.txt')
+
+    new_file_path = os.path.join(home_dir, 'Node_Folder', 'Node2', f'{file_name}.txt')
+
+    with open(file_path, 'r') as f:
+        file_contents = f.read()
+
+    file_data = {"file": [file_name, file_contents]}
+    file_json = json.dumps(file_data)
+
+    new_file_data = json.loads(file_json)
+    new_file_name = new_file_data['file'][0]
+    new_file = new_file_data['file'][1]
+
+    with open(new_file_path, 'w') as f:
+        f.write(new_file)

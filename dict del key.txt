@@ -1,0 +1,17 @@
+dict.pop(key, None) # worked once but couldnt replicate? idk
+---------------------
+tx = {
+	"DateTimeStamp": str(datetime.datetime.now()),
+	"FromAddress": "from_wallet_address",
+	"ToAddress": "to_wallet_address",
+	"Amount": amount,
+	"Signature": 0
+}
+tx_without_sig = {key: tx[key] for key in tx if key != 'Signature'}
+
+print(f'tx: {tx}')
+print(f'tx_without_sig: {tx_without_sig}')
+
+tx: {'DateTimeStamp': '2021-10-18 02:48:53.621364', 'FromAddress': 'from_wallet_address', 'ToAddress': 'to_wallet_address', 'Amount': 500, 'Signature': 0}
+tx_without_sig: {'DateTimeStamp': '2021-10-18 02:48:53.621364', 'FromAddress': 'from_wallet_address', 'ToAddress': 'to_wallet_address', 'Amount': 500
+---------------------

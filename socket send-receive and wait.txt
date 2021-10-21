@@ -1,0 +1,12 @@
+# returns response if needed
+def send_data_and_wait_for_response(sock, data):
+    sock.sendall(data.encode())
+    response = sock.recv(1024).decode()
+    return response
+
+
+# returns the received data
+def receive_data_and_send_response(sock, response='receive'):
+    data = sock.recv(1024).decode()
+    sock.sendall(response.encode())
+    return data

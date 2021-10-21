@@ -1,0 +1,1 @@
+python -c 'import testing; testing.create_node_dirs(5)'

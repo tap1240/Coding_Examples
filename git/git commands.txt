@@ -1,0 +1,29 @@
+C:\Users\tpote\OneDrive\School\
+cd ~ = C:\Users\tpote\
+
+-Push steps-
+git checkout taylorBranch 
+git branch (to confirm on taylorBranch)
+git add . (or specific file)
+git commit -m "msg comments"
+git push origin taylorBranch
+
+-syncing to master-
+git checkout master
+git pull 
+git checkout taylorBranch
+git merge master
+
+-branches-
+git switch -c taylorBranch (idk)
+(creates and gets remote branch, remove --track if exists)
+	git checkout --track origin/my-branch-name
+(creates branch)
+	git checkout -b taylorBranch 
+git push -u origin <branch> (push branch to remote)
+	git push --set-upstream origin yourbranchname (creates remote branch)
+git remote update origin --prune (update branches in github)
+git branch --all (shows local and remote branches)
+
+
+

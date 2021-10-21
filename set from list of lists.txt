@@ -1,0 +1,5 @@
+# returns list of lists
+list_of_lists_of_files = [a_dict['NodeFiles'] for a_dict in data['nodes']]
+# list_of_all_files = list(itertools.chain.from_iterable(list_of_all_files))
+list_of_all_files = list(itertools.chain(*list_of_lists_of_files))
+print(set(list_of_all_files))

@@ -1,0 +1,2 @@
+# returns everything not in list 1
+target_list = list(set(list_2).difference(list_1))

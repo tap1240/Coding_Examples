@@ -1,0 +1,20 @@
+def parse_args():
+    parser = argparse.ArgumentParser(description='Script used to scrape Google images')
+    parser.add_argument('-s', '--search', required=True, type=str, help='search string')
+    parser.add_argument('-n', '--num', default=5, type=int, help='number of images to save')
+    parser.add_argument('-d', '--directory', default=home_dir, type=str, help='destination folder')
+    args = parser.parse_args()
+
+
+def get_args():
+    query = args.search.split()
+    query = '+'.join(query)
+    num_images = args.num
+    destination_directory = args.directory
+
+    return query, num_images, destination_directory
+-------------------------
+Conditionally required arg (only require -n if -c in args)
+group.add_argument('-c', '--client', action='store_true', dest='client', default=None,
+                   required=False, help='Create a client instance.')
+parser.add_argument('-n', '--node', required='--client' in sys.argv, metavar='', type=str, help='Node directory')

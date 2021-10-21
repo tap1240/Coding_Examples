@@ -1,0 +1,6 @@
+        source = os.path.join(product_folder, first_img)
+        destination = os.path.join(master_directory, first_img)
+        print(f'Source: {source}')
+        print(f'Dest: {destination}')
+
+        copyfile(source, destination)

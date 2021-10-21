@@ -1,0 +1,11 @@
+def clear_and_make_dir(directory):
+    # clear contents if it exists
+    if os.path.exists(directory):
+        for files in os.listdir(directory):
+            path = os.path.join(directory, files)
+            try:
+                shutil.rmtree(path)
+            except OSError:
+                os.remove(path)
+    else:
+        os.makedirs(directory)

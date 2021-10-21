@@ -1,0 +1,8 @@
+    # get json data
+    json_dict = get_picture_status_dict('picture_status.json')
+    json_str = json.dumps(json_dict)
+
+    # json to dataframe then csv # NOTE ORIENT
+    df = pd.read_json(json_str, orient='index')
+    csv_path = os.path.join(home_dir, 'picture_status.csv')
+    df.to_csv(csv_path, index=False)
