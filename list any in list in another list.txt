@@ -1,0 +1,2 @@
+        if any(tx in block['TransactionList'] for tx in txs):
+returns true or false

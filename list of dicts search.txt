@@ -27,6 +27,10 @@ data = load_json(path)
 correct_node = [node for node in data['nodes'] if node['NodeName'] == 'Node1'][0]
 print(correct_node['NodeName'])
 
+# returns a list of all 'NodeNames'
+list_of_node_dirs = [a_dict['NodeName'] for a_dict in data['nodes']]
+print(list_of_node_dirs)
+
 # returns a list of nodes that are named Node1 (note change two NodeNames to 'Node1' to replicate
 accepted_nodes = []
 for node in data['nodes']:
@@ -47,10 +51,6 @@ for node in data['nodes']:
 		list_of_nodes.append(node['NodeName'])
 print(list_of_nodes)
 
-# returns a list of all 'NodeNames'
-list_of_node_dirs = [a_dict['NodeName'] for a_dict in data['nodes']]
-print(list_of_node_dirs)
-
 # delete from list of dicts based on 'NodeName'
 active_nodes = [{'NodeName': 'Node1'}, {'NodeName': 'Node2'}]
 active_nodes[:] = [d for d in active_nodes if d.get('NodeName') != node_name]
@@ -64,3 +64,6 @@ for node_dict in active_nodes['nodes']:
 
 # delete all of one key	
 client_active_nodes = [{key: value for key, value in d.items() if key != 'NodeConn'} for d in active_nodes['nodes']]
+
+# find min or max filtered by one key
+   last_block = max(block_ledger['blocks'], key=lambda x: x['DateTimeStamp'])
