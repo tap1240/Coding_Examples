@@ -1,0 +1,10 @@
+from random import randrange
+
+from_index = randrange(num_wallets)
+        to_index = randrange(num_wallets)
+        while to_index == from_index:
+            to_index = randrange(num_wallets)
+
+-------------
+
+random.choice([x for x in range(11) if x != 5])
